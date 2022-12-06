@@ -16,6 +16,10 @@ export const DivLogo = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 800px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
   .logo {
     color: var(--color-primary);
   }
@@ -28,6 +32,10 @@ export const DivLogo = styled.div`
     background-color: var(--grey-3);
     border: 1px solid var(--grey-3);
     color: var(--grey-0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     :hover {
       border: 2px solid var(--grey-0);
       font-weight: 700;
@@ -45,6 +53,13 @@ export const DivInfo = styled.div`
   border-top: 0.5px solid var(--grey-3);
   border-bottom: 0.5px solid var(--grey-3);
   color: var(--grey-0);
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 1rem;
+  }
   h1 {
     font-size: 18px;
     font-weight: 700;
@@ -61,4 +76,8 @@ export const DivInProg = styled.div`
   color: var(--grey-0);
   gap: 2rem;
   margin-top: 2rem;
+  @media (max-width: 800px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
 `;

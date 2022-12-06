@@ -1,16 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { DivHome, DivInfo, DivInProg, DivLogo } from "./styles";
 
-const Homepage = () => {
+const Homepage = ({ user }) => {
+  function clearLocal() {
+    localStorage.clear();
+  }
   return (
     <DivHome>
       <DivLogo>
         <h1 className="logo">Kenzie Hub</h1>
-        <button className="back">Sair</button>
+        <Link to="/" onClick={() => clearLocal()} className="back">
+          Sair
+        </Link>
       </DivLogo>
       <DivInfo>
-        <h1>Olá, Samuel Leão</h1>
-        <span>Primeiro módulo (Introdução ao Frontend)</span>
+        <h1>Olá, {user.name}</h1>
+        <span>{user.course_module}</span>
       </DivInfo>
       <DivInProg>
         <h2>Que pena! Estamos em desenvolvimento :(</h2>

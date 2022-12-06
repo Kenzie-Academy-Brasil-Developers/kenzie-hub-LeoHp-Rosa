@@ -1,4 +1,33 @@
-@import "./index.css";
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+@font-face {
+    font-family: "Inter", sans-serif ;
+    src: url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+}
+:root {
+  --color-primary: #ff577f;
+  --color-primary-Fo: #ff427f;
+  --color-primary-Neg: #59323f;
+  --grey-4: #121214;
+  --grey-3: #212529;
+  --grey-2: #343b41;
+  --grey-1: #868e96;
+  --grey-0: #f8f9fa;
+  --sucess: #3fe864;
+  --negative: #e83f5b;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+body {
+  background-color: #101010;
+  min-width: 100vw;
+  width: max-content;
+}
 
 .form {
   height: 48px;
@@ -10,6 +39,9 @@
   background-color: var(--grey-2);
 
   color: var(--grey-0);
+  @media (max-width: 800px) {
+      width: 100%;
+    }
 }
 .btnPink {
   height: 48px;
@@ -21,6 +53,9 @@
   background-color: var(--color-primary);
 
   color: var(--grey-0);
+  @media(max-width:800px){
+    width: 95%;
+  }
 }
 .btnGrey {
   height: 48px;
@@ -39,6 +74,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3rem;
 }
 .App {
   background-color: #101010;
@@ -49,3 +85,4 @@
   justify-content: center;
   flex-direction: column;
 }
+`;
