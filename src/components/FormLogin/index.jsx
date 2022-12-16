@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { DivLogin } from "./styles";
 import { useForm } from "react-hook-form";
@@ -6,9 +6,10 @@ import { api } from "../../services/api";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginCheck } from "./loginCheck";
 import { toast } from "react-toastify";
+import { UserContext } from "../contexts/UserContext";
 
-const FormLogin = ({ setUser }) => {
-  const navigate = useNavigate();
+const FormLogin = () => {
+  const { userLogin } = useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -24,23 +25,7 @@ const FormLogin = ({ setUser }) => {
   const submit = (data) => {
     userLogin(data);
   };
-  async function userLogin(data) {
-    try {
-      const response = await api.post("/sessions", data);
-      setUser(response.data.user);
-      console.log(response.data);
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-      {
-        response.status === 200 && toast.success("Login Efetuado com Sucesso!");
-        setTimeout(() => {
-          navigate("/home");
-        }, 3500);
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
+
   return (
     <DivLogin onSubmit={handleSubmit(submit)}>
       <h2>Login</h2>

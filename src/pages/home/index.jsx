@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../components/contexts/UserContext";
+import ContTecno from "../../components/ContTecno";
 import { DivHome, DivInfo, DivInProg, DivLogo } from "./styles";
 
-const Homepage = ({ user }) => {
+const Homepage = ({ openModal }) => {
   function clearLocal() {
     localStorage.clear();
   }
+  const { user } = useContext(UserContext);
+
   return (
     <DivHome>
       <DivLogo>
@@ -19,10 +23,13 @@ const Homepage = ({ user }) => {
         <span>{user.course_module}</span>
       </DivInfo>
       <DivInProg>
-        <h2>Que pena! Estamos em desenvolvimento :(</h2>
-        <span>
-          Nossa aplicação está em desenvolvimento, em breve teremos novidades
-        </span>
+        <div className="tech">
+          <h1>Tecnologias</h1>
+          <button onClick={() => openModal()}>+</button>
+        </div>
+        <div className="techlist">
+          <ContTecno openModal={openModal}></ContTecno>
+        </div>
       </DivInProg>
     </DivHome>
   );

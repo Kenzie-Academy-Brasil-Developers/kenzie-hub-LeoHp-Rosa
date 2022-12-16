@@ -80,4 +80,38 @@ export const DivInProg = styled.div`
     width: 100%;
     padding: 0 1rem;
   }
+  .tech {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    button {
+      height: 32px;
+      width: 32px;
+      background-color: var(--grey-2);
+      color: var(--grey-0);
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 0.2rem;
+      border: 0px transparent;
+      :hover {
+        background-color: var(--grey-0);
+        color: var(--grey-2);
+        border: var(--grey-2);
+        cursor: pointer;
+      }
+    }
+    h1 {
+      font-size: 18px;
+    }
+  }
+  .techlist {
+    height: 416px;
+    width: 100%;
+    background-color: var(--grey-3);
+    border-radius: 4px;
+    padding: 1rem;
+  }
 `;

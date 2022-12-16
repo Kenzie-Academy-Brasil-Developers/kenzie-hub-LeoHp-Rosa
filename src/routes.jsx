@@ -4,12 +4,12 @@ import Homepage from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
 
-const ChangeRoutes = ({ setUser, user }) => {
+const ChangeRoutes = ({ openModal }) => {
   return (
     <Routes>
-      <Route path="/" element={<Login setUser={setUser} />} />
+      <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/home" element={<Homepage user={user} />} />
+      <Route path="/home" element={<Homepage openModal={openModal} />} />
     </Routes>
   );
 };

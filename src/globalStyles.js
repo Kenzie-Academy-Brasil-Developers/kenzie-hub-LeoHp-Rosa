@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
   margin: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  list-style: none;
 }
 body {
   background-color: #101010;
@@ -79,10 +80,24 @@ body {
 .App {
   background-color: #101010;
   width: 100vw;
-
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.modal-content{
+  height: 342px;
+  width: 369px;
+  background-color: var(--grey-3);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 5px 0px var(--grey-0);
+
+}
+.overlay{
+
 }
 `;

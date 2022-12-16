@@ -1,32 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { DivRegister } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerCheck } from "./registerCheck";
-import { api } from "../../services/api";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { RegisterContext } from "../contexts/RegisterContext";
 
 const FormRegister = () => {
-  const navigate = useNavigate();
-
-  async function regUser(data) {
-    try {
-      const response = await api.post("users", data);
-      {
-        response.status === 201 &&
-          toast.success(
-            "Conta criada com sucesso, redirecionando para pagina de login!"
-          );
-        setTimeout(() => {
-          navigate("/");
-        }, 3500);
-      }
-    } catch (err) {
-      toast.error(err.response.data.message);
-    }
-  }
-
+  const { submit } = useContext(RegisterContext);
   const {
     register,
     handleSubmit,
@@ -48,9 +28,6 @@ const FormRegister = () => {
   function changeSelect() {
     setChange(true);
   }
-  const submit = (data) => {
-    regUser(data);
-  };
 
   return (
     <DivRegister onSubmit={handleSubmit(submit)} noValidate>

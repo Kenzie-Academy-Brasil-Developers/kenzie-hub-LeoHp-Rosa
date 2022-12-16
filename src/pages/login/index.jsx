@@ -2,11 +2,11 @@ import React from "react";
 import FormLogin from "../../components/FormLogin";
 import { LoginPage } from "./styles";
 
-const Login = ({ setUser }) => {
+const Login = () => {
   return (
     <LoginPage>
       <h1> Kenzie Hub</h1>
-      <FormLogin setUser={setUser}></FormLogin>
+      <FormLogin></FormLogin>
     </LoginPage>
   );
 };
