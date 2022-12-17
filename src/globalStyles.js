@@ -94,10 +94,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 0px 5px 0px var(--grey-0);
+  box-shadow: 0px 0px 5px 0px var(--grey-1);
 
 }
 .overlay{
-
 }
+
 `;

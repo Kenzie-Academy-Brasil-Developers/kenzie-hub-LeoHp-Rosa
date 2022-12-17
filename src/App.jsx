@@ -3,49 +3,18 @@ import { ThemeProvider } from "styled-components";
 import mainTheme from "./mainTheme";
 import Modal from "react-modal";
 import "react-toastify/dist/ReactToastify.css";
-import { useContext, useState } from "react";
-import { ModalAdd } from "./components/modal";
-import { ModalProvider } from "./components/contexts/ModalProvider";
-import { toast } from "react-toastify";
-import { api } from "./services/api";
+import { useContext } from "react";
+
+import { ModalContext } from "./components/contexts/ModalProvider";
+import ModalEditRem from "./components/modalEdit";
+import ModalAdd from "./components/modal";
 
 Modal.setAppElement("#root");
 function App() {
-  const [modalIsOpen, setInOpen] = useState(false);
-  async function addTech(data) {
-    const token = localStorage.getItem("@TOKEN");
-    try {
-      const response = await api.post("/users/techs", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        data,
-      });
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-      toast.error(err);
-    }
-  }
-  async function delTech() {
-    try {
-      const response = await api.delete(`users;techs/`);
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  const { modalAdd } = useContext(ModalContext);
+  const { modalIsOpen } = useContext(ModalContext);
+  const { closeModal } = useContext(ModalContext);
 
-  async function openModal() {
-    setInOpen(true);
-  }
-  function closeModal() {
-    setInOpen(false);
-  }
-  const submit = (data) => {
-    console.log(data);
-    addTech(data);
-  };
   const customStyles = {
     content: {
       top: "50%",
@@ -66,9 +35,9 @@ function App() {
           className="modal-content"
           overlayClassName="overlay"
         >
-          <ModalAdd closeModal={closeModal} submit={submit}></ModalAdd>
+          {modalAdd ? <ModalAdd></ModalAdd> : <ModalEditRem></ModalEditRem>}
         </Modal>
-        <ChangeRoutes openModal={openModal}></ChangeRoutes>
+        <ChangeRoutes></ChangeRoutes>
       </div>
     </ThemeProvider>
   );

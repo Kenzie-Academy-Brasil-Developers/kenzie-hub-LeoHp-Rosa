@@ -6,7 +6,9 @@ import { ModalProvider } from "./ModalProvider";
 const Providers = ({ children }) => {
   return (
     <UserProvider>
-      <RegisterProvider>{children}</RegisterProvider>
+      <RegisterProvider>
+        <ModalProvider>{children}</ModalProvider>
+      </RegisterProvider>
     </UserProvider>
   );
 };

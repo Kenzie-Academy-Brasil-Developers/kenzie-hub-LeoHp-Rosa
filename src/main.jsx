@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import App from "./App";
-import { ModalProvider } from "./components/contexts/ModalProvider";
-import Providers from "./components/contexts/providers";
+import Providers from "./components/contexts/Providers";
+
 import { GlobalStyle } from "./globalStyles";
 
 ReactDOM.createRoot(document.getElementById("root")).render(

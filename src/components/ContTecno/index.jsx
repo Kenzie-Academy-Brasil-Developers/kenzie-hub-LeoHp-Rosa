@@ -1,19 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ModalContext } from "../contexts/ModalProvider";
 import { UserContext } from "../contexts/UserContext";
-import { ModalAdd, ModalEdit } from "../modal";
 
 import { UlTech } from "./styles";
 
-const ContTecno = ({ openModal }) => {
+const ContTecno = () => {
   const { tech } = useContext(UserContext);
-  const { setInOpen } = useContext(ModalContext);
+  const { setModalEdit } = useContext(ModalContext);
+  const { openModal } = useContext(ModalContext);
+  const { setModalAdd } = useContext(ModalContext);
 
   return (
     <UlTech>
-      {tech.length !== 0 ? (
+      {tech ? (
         tech.map((item) => (
-          <li key={item.id}>
+          <li
+            key={item.id}
+            onClick={() => {
+              setModalEdit(true);
+              setModalAdd(false);
+              openModal();
+              localStorage.setItem("@LIID", JSON.stringify(item));
+            }}
+          >
             <h2>{item.title}</h2>
             <h3>{item.status}</h3>
           </li>
@@ -27,6 +36,8 @@ const ContTecno = ({ openModal }) => {
           </span>
           <button
             onClick={() => {
+              setModalAdd(true);
+              setModalEdit(false);
               openModal();
             }}
           >

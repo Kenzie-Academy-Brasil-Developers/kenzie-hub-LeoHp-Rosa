@@ -89,7 +89,11 @@ export const DivModalEdit = styled.form`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
+  padding-bottom: 0.5rem;
+  p {
+    color: var(--grey-0);
+    font-size: 12px;
+  }
   .newTecnoTop {
     height: 50px;
     width: 100%;
@@ -111,6 +115,10 @@ export const DivModalEdit = styled.form`
       color: var(--grey-1);
       border: transparent;
       background-color: transparent;
+      :hover {
+        cursor: pointer;
+        color: var(--grey-0);
+      }
     }
   }
   .newTecno {
@@ -145,17 +153,29 @@ export const DivModalEdit = styled.form`
       height: 48px;
       width: 204px;
       background-color: var(--color-primary);
+      border: 2px solid var(--color-primary);
       color: var(--grey-0);
       border-radius: 4px;
       padding: 0px 22px;
+      :hover {
+        cursor: pointer;
+        border: 2px solid var(--grey-0);
+        font-weight: 700;
+      }
     }
     .delete {
       height: 48px;
       width: 98px;
       background-color: var(--grey-1);
+      border: var(--grey-1);
       color: var(--grey-0);
       border-radius: 4px;
       padding: 0px 22px 0px 22px;
+      :hover {
+        cursor: pointer;
+        border: 2px solid var(--grey-0);
+        font-weight: 700;
+      }
     }
   }
 `;

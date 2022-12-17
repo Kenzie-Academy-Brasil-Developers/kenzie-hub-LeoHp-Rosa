@@ -7,7 +7,7 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState([]);
-  const [tech, setTech] = useState([]);
+  const [tech, setTech] = useState(null);
 
   const navigate = useNavigate();
 
@@ -32,15 +32,15 @@ export const UserProvider = ({ children }) => {
         navigate("/");
       }
     })();
-  }, []);
+  }, [tech]);
 
   async function userLogin(data) {
     try {
       const response = await api.post("/sessions", data);
       setUser(response.data.user);
       setTech(response.data.techs);
-      const token = response.data.token;
-      localStorage.setItem("@TOKEN", token);
+
+      localStorage.setItem("@TOKEN", response.data.token);
       {
         response.status === 200 && toast.success("Login Efetuado com Sucesso!");
         setTimeout(() => {
@@ -53,7 +53,7 @@ export const UserProvider = ({ children }) => {
     }
   }
   return (
-    <UserContext.Provider value={{ user, setUser, userLogin, tech }}>
+    <UserContext.Provider value={{ user, setUser, userLogin, tech, setTech }}>
       {children}
     </UserContext.Provider>
   );

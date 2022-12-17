@@ -1,10 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { ModalContext } from "../contexts/ModalProvider";
 import { modalCheck } from "./modalCheck";
-import { DivModalAdd, DivModalEdit } from "./styles";
+import { DivModalAdd } from "./styles";
 
-export const ModalAdd = ({ closeModal, submit }) => {
+const ModalAdd = () => {
+  const { closeModal } = useContext(ModalContext);
+  const { submit } = useContext(ModalContext);
   const {
     register,
     handleSubmit,
@@ -42,27 +45,4 @@ export const ModalAdd = ({ closeModal, submit }) => {
   );
 };
 
-export const ModalEdit = () => {
-  return (
-    <DivModalEdit>
-      <div className="newTecnoTop">
-        <p>Tecnologia Detalhes</p>
-        <button>X</button>
-      </div>
-      <div className="newTecno">
-        <span>Nome do Projeto</span>
-        <input placeholder="Digite a Tecnologia"></input>
-        <span>Status</span>
-        <select>
-          <option value="Iniciante">Iniciante</option>
-          <option value="Intermediário">Intermediário</option>
-          <option value="Avançado">Avançado</option>
-        </select>
-      </div>
-      <div className="btnDiv">
-        <button className="save">Salvar alterações</button>
-        <button className="delete">Excluir</button>
-      </div>
-    </DivModalEdit>
-  );
-};
+export default ModalAdd;

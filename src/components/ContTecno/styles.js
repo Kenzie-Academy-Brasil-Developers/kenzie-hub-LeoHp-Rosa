@@ -4,11 +4,20 @@ export const UlTech = styled.ul`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  ::-webkit-scrollbar {
+    width: 10px;
+    margin-left: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+  }
+
   li {
     height: 49px;
-    width: 100%;
+    width: 97%;
     border-radius: 4px;
     background-color: var(--grey-4);
     color: var(--grey-0);
@@ -40,6 +49,7 @@ export const UlTech = styled.ul`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    margin: 3rem;
     h1 {
       font-size: 26px;
       font-weight: 400;
