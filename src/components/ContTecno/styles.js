@@ -7,6 +7,7 @@ export const UlTech = styled.ul`
   flex-direction: column;
   overflow-y: scroll;
   overflow-x: hidden;
+  align-items: center;
   ::-webkit-scrollbar {
     width: 10px;
     margin-left: 10px;

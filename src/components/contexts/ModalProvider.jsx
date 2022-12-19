@@ -7,6 +7,7 @@ export const ModalContext = createContext({});
 
 export const ModalProvider = ({ children }) => {
   const { setTech, tech } = useContext(UserContext);
+  const [edit, setEdit] = useState(null);
 
   async function addTech(data) {
     const token = localStorage.getItem("@TOKEN");
@@ -51,7 +52,9 @@ export const ModalProvider = ({ children }) => {
   async function editTech(data) {
     const token = localStorage.getItem("@TOKEN");
     const itemList = localStorage.getItem("@LIID");
+    const key = localStorage.getItem("@KEY");
     const listJson = JSON.parse(itemList);
+
     const id = listJson.id;
     try {
       const response = await api.put(`/users/techs/${id}`, data, {
@@ -60,10 +63,9 @@ export const ModalProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      const filter = tech.filter((item) => item.id === id);
-      console.log(filter);
-      setTech(filter);
-      console.log(response);
+
+      tech.splice(key, 1, response.data);
+
       toast.success("Tecnologia atualizada com sucesso!");
       if (response) {
         closeModal();
@@ -86,7 +88,6 @@ export const ModalProvider = ({ children }) => {
     addTech(data);
   };
   const subEdit = (data) => {
-    console.log(data);
     editTech(data);
   };
 

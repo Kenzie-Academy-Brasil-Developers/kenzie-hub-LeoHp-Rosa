@@ -13,13 +13,14 @@ const ContTecno = () => {
   return (
     <UlTech>
       {tech ? (
-        tech.map((item) => (
+        tech.map((item, index) => (
           <li
-            key={item.id}
+            key={index}
             onClick={() => {
               setModalEdit(true);
               setModalAdd(false);
               openModal();
+              localStorage.setItem("@KEY", index);
               localStorage.setItem("@LIID", JSON.stringify(item));
             }}
           >

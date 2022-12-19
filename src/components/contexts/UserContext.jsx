@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
         navigate("/");
       }
     })();
-  }, [tech]);
+  }, []);
 
   async function userLogin(data) {
     try {
